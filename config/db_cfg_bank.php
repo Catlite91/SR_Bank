@@ -3,7 +3,7 @@
  * 数据库配置文件
  */
 return array(
-    'dbname' => 'bank',
+    'dbname' => 'srbank',
     'charset' => 'utf8',
     'write' => array(
         'dbhost' => '127.0.0.1',

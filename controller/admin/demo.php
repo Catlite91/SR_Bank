@@ -8,7 +8,7 @@ class demo_Controller extends Controller {
     function testAction() {
         $data = $this->_Demo->read_demo();
         $name = $data[0]["password"];
-        $tpl = "admin_demo.tpl";
+        $tpl = "admin_home.tpl";
         $this->assign("user_name", $name);
         $this->display($tpl);
     }
