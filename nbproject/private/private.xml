@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/bank/lib/Controller.php</file>
-            <file>file:/C:/xampp/htdocs/bank/templates/login.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/templates/admin/admin_home.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/model/bk_data/basic.php</file>
-            <file>file:/C:/xampp/htdocs/bank/templates/sign_up.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/controller/error.php</file>
-            <file>file:/C:/xampp/htdocs/bank/controller/login.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

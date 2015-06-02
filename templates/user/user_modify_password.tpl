@@ -35,24 +35,24 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Add New Account</label>
+                        <label>Modify Login Password</label>
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Used Password</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
                                     <input type="text" class="form-control" id="acc_no" name="user_no">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >New Password</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
                                     <input type="text" class="form-control" id="acc_no" name="user_no">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password Again</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >New Password Again</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
                                     <input type="text" class="form-control" id="acc_no" name="user_no">
                                 </div>

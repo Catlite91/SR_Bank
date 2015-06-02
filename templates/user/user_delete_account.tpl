@@ -35,35 +35,12 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Add New Account</label>
+                        <label>Delete Account</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password Again</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
-                                </div>
-                            </div>
-                            <div class='form-group'>
-                               <div class="col-md-12 col-sm-12 col-md-offset-4">
-                               <button type="submit" class="btn btn-primary ">Submit</button>
-                               <button type="cancel" class="btn btn-primary ">Cancel</button>
-                           </div>
-                </div>
-                        </form>
+                        <table class="table table-striped">
+                        
+                       </table>
                     </div>
                 </div>
             </div>

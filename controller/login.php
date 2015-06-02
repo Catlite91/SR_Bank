@@ -14,8 +14,7 @@ class login_Controller extends Controller {
         $tpl = "login.tpl";
         $this->display($tpl);
     }
-    
-    
+        
     function loginAction(){
         $user_id = $this->_get("user_id");
         $user_pwd = $this->_get("user_pwd");
@@ -28,9 +27,9 @@ class login_Controller extends Controller {
             $_SESSION['user_id'] = $data['user_id'];
             $_SESSION['user_name'] = $data['user_name'];
             if($data['role_id'] == 1){    //admin
-                header("Location: admin/showPage.do");
+                header("Location: ../admin/home/showPage.do");
             }else if($data['role_id'] == 2){
-                header("Location: user/showPage.do");
+                header("Location: ../user/home/showPage.do");
             }
         }        
     }
