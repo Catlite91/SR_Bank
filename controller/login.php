@@ -25,6 +25,7 @@ class login_Controller extends Controller {
         }else{
             session_start();
             $_SESSION['user_id'] = $data['user_id'];
+            $_SESSION['user_no'] = $data['user_no'];
             $_SESSION['user_name'] = $data['user_name'];
             if($data['role_id'] == 1){    //admin
                 header("Location: ../admin/home/showPage.do");

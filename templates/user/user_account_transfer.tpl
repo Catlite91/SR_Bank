@@ -35,50 +35,44 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Transfer In Same Bank</label>
+                        <label>Transfer In Same Account</label>
                     </div>
                     <div class="panel-body">
-                        <p class="text-left"><u><strong>Step One: Fill Information Of Receiver</strong></u></p>
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Roll-in Account</label>
+                                <div class ="col-md-6 col-sm-6 ui-sortable">
+                                    <select class=" form-control" id="acc_id" name="acc_id">
+                                        <option value="" ></option>
+                                    </select>
                                 </div>
                             </div>
-                            <hr>
-                            <p class="text-left"><u><strong>Step Two: Fill Information Of Transfer</strong></u></p>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Currency</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
-                                    <select class=" form-control">
-                                        <option value="M"selected>RMB</option>
-                                        <option value="F">USD</option>
-                                        <option value="F">EUR</option>
+                                    <select class=" form-control" id="transfer_currency" name="transfer_currency">
+                                        <option value=""selected>RMB</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Sum</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable input-group'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="text" class="form-control" id="trans_amount" name="trans_amount">
                                      <span class="input-group-addon">.00</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Message</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="text" class="form-control" id="trans_message" name="trans_message">
                                 </div>
                             </div>
-                            <hr>
-                            <p class="text-left"><u><strong>Step Three: Payment Information</strong></u></p>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account To Pay</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Roll-out Account</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
-                                    <select class=" form-control">
-                                        <option value="M"selected>6233002302312312</option>
-                                        <option value="F">6233123123123</option>
+                                    <select class=" form-control" name="trans_acc_id" id="trans_acc_id">
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
@@ -103,11 +97,11 @@
             <h4 class="modal-title" id="myModalLabel">Account Password</h4>
           </div>
           <div class="modal-body">
-          <form class="form-inline">
+          <form class="form-inline" action = "accountTransf.do" method="POST">
             <div class="form-group">
               <label class="" for="exampleInputAmount">Password:</label>
               <div class="input-group">
-                <input type="password" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                <input type="password" class="form-control" id="acc_pwd" name="acc_pwd" placeholder="Amount">
               </div>
             </div>
           </form>

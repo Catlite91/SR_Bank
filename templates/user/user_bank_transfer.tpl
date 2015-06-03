@@ -35,19 +35,19 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Transfer In Same Account</label>
+                        <label>Transfer In Same Bank</label>
                     </div>
                     <div class="panel-body">
+                        <p class="text-left"><u><strong>Step One: Fill Information Of Receiver</strong></u></p>
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Roll-in Account</label>
-                                <div class ="col-md-6 col-sm-6 ui-sortable">
-                                    <select class=" form-control">
-                                        <option value="M"selected>6233002302312312</option>
-                                        <option value="F">6233123123123</option>
-                                    </select>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
+                                <div class='col-md-6 col-sm-6 ui-sortable'>
+                                    <input type="text" class="form-control" id="acc_no" name="user_no">
                                 </div>
                             </div>
+                            <hr>
+                            <p class="text-left"><u><strong>Step Two: Fill Information Of Transfer</strong></u></p>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Currency</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
@@ -71,8 +71,10 @@
                                     <input type="text" class="form-control" id="acc_no" name="user_no">
                                 </div>
                             </div>
+                            <hr>
+                            <p class="text-left"><u><strong>Step Three: Payment Information</strong></u></p>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Roll-out Account</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account To Pay</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
                                     <select class=" form-control">
                                         <option value="M"selected>6233002302312312</option>

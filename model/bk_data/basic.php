@@ -11,7 +11,6 @@ class bk_data_basic_Model extends Model{
     function getUserByIds($where){
         $where['user_state'] = 1;
         $data = $this->_bankUserDB->fetchAll($where);
-        
         return $data;
     }
     

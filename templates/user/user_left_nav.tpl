@@ -36,6 +36,7 @@
                     <li class="active"><a>Transfer In Same Account</a></li>
                     <li><a>Transfer In Same Bank</a></li>
                     <li><a>Transactions Query</a></li>
+                    <li><a>DownLoad Transfer Infomation</a></li>
                 </ul>
             </li>
         </ul>

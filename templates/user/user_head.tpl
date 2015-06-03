@@ -14,7 +14,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Simon Liu <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><!--{$user_id}--><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Modify Info</a></li>
                 <li><a href="#">Modify Password</a></li>
