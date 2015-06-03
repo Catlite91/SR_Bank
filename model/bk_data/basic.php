@@ -23,6 +23,14 @@ class bk_data_basic_Model extends Model{
         }
         return $result;
     }
+
+    function signUpUser($where){
+         $where['role_id'] = 2;
+         $table = "bk_user";
+         
+         $result = $this->_bankUserDB->insert($table,$where);
+         return $result;
+    }
     
 }
 
