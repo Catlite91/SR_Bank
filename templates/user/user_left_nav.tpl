@@ -18,25 +18,26 @@
             <li>
                 <p>Individual Information Managemer</p>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a>Modify Basic Information</a></li>
-                    <li><a>Modify Password</a></li>
+                    <li class="<!--{$showT}-->" ><a href="modify.do">Modify Basic Information</a></li>
+                    <li class="<!--{$showst}-->" ><a href="modify.do">Modify Password</a></li>
                 </ul>
             </li>
             <li>
                 <p>Account Management</p>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a>Add New Account</a></li>
-                    <li><a>Delete Account</a></li>
-                    <li><a>Loss Report</a></li>
+                    <li class="<!--{$show}-->" ><a href="modify.do">Add New Account</a></li>
+                    <li class="<!--{$show}-->" ><a href="modify.do">Delete Account</a></li>
+                    <li class="<!--{$show}-->" ><a href="modify.do">Loss Report</a></li>
                 </ul>
             </li>
             <li>
                 <p>Transfer Between Accounts</p>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a>Transfer In Same Account</a></li>
-                    <li><a>Transfer In Same Bank</a></li>
-                    <li><a>Transactions Query</a></li>
-                    <li><a>DownLoad Transfer Infomation</a></li>
+                    <li class="<!--{$showTest}-->" ><a href="../transfer/showTest.do">Test</a></li>
+                    <li class="<!--{$showAccountTransf}-->" ><a href="../transfer/showAccountTransf.do">Transfer In Same Account</a></li>
+                    <li class="<!--{$showBankTransf}-->" ><a href="../transfer/showBankTransf.do">Transfer In Same Bank</a></li>
+                    <li class="<!--{$showTransaction}-->" ><a href="../transfer/showTransaction.do">Transactions Query</a></li>
+                    <li class="<!--{$showTransf}-->" ><a href="../transfer/showTransf.do">DownLoad Transfer Infomation</a></li>
                 </ul>
             </li>
         </ul>

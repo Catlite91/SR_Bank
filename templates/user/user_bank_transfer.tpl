@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="text" class="form-control" id="acc_num" name="acc_num">
                                 </div>
                             </div>
                             <hr>

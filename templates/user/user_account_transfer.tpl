@@ -38,20 +38,20 @@
                         <label>Transfer In Same Account</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Roll-in Account</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
                                     <select class=" form-control" id="acc_id" name="acc_id">
-                                        <option value="" ></option>
+                                        <!--{html_options options=$acc_ids}-->
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Currency</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
-                                    <select class=" form-control" id="transfer_currency" name="transfer_currency">
-                                        <option value=""selected>RMB</option>
+                                    <select class=" form-control" id="trans_currency" name="trans_currency">
+                                        <option value="RMB" selected>RMB</option>
                                     </select>
                                 </div>
                             </div>
@@ -60,6 +60,8 @@
                                 <div class='col-md-6 col-sm-6 ui-sortable input-group'>
                                     <input type="text" class="form-control" id="trans_amount" name="trans_amount">
                                      <span class="input-group-addon">.00</span>
+                                     <label class="col-md-2 col-sm-2 ui-sortable" id="label_acc_balance"></label>
+                                     <input type="hidden" id="acc_balance" data-balance = "<!--{$acc_balance}-->" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -72,7 +74,7 @@
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Roll-out Account</label>
                                 <div class ="col-md-6 col-sm-6 ui-sortable">
                                     <select class=" form-control" name="trans_acc_id" id="trans_acc_id">
-                                        <option value=""></option>
+                                        <!--{html_options options=$trans_acc_ids}-->
                                     </select>
                                 </div>
                             </div>
@@ -82,7 +84,7 @@
                                 <button type="cancel" class="btn btn-primary ">Cancel</button>
                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,7 +101,7 @@
           <div class="modal-body">
           <form class="form-inline" action = "accountTransf.do" method="POST">
             <div class="form-group">
-              <label class="" for="exampleInputAmount">Password:</label>
+              <label class="" for="acc_pwd">Password:</label>
               <div class="input-group">
                 <input type="password" class="form-control" id="acc_pwd" name="acc_pwd" placeholder="Amount">
               </div>
@@ -109,7 +111,7 @@
             
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Commit</button>
+            <button type="button" id= "commit" class="btn btn-primary">Commit</button>
           </div>
         </div>
       </div>
@@ -119,6 +121,56 @@
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+               var data = $('#acc_balance').attr('data-balance');
+               var cols = data.split('|');
+               var first_curr = cols[0].split("_")[0];
+               for(var i = 0; i< cols.length-1; i++){
+                   var temp = cols[i].split("_");
+                   $('#acc_balance').data(temp[0], temp[1]);
+               }
+               $("#label_acc_balance").html("Currency:"+ $('#acc_balance').data(first_curr));
+             });
+             $('#acc_id').change(function(){
+                 var acc_id = $(this).children('option:selected').val();
+                 $("#label_acc_balance").html("Currency:"+ $('#acc_balance').data(acc_id));
+            });
+            
+            $('#trans_amount').change(function(){
+                var trans_amount = $(this).val();
+                var currency = $("#label_acc_balance").html().substring(9);
+               if(parseInt(trans_amount) > parseInt(currency)){
+                 $(this).parent().removeClass("has-success");
+                 $(this).parent().addClass("has-error");
+               }else{
+                   $(this).parent().removeClass("has-error");
+                   $(this).parent().addClass("has-success");
+               }
+                
+            });
+            
+            $('#commit').click(function(){
+                var data = { };
+                data.acc_pwd = $('#acc_pwd').val();
+                data.acc_id = $('#acc_id').val();
+                data.trans_acc_id = $('#trans_acc_id').val();
+                data.trans_amount = $('#trans_amount').val();
+                data.trans_currency = $('#trans_currency').val();
+                data.trans_message = $('#trans_message').val();
+                console.log(data);
+                $.ajax({
+                    url:'ajaxAccountTransf.do',
+                    type:'get',
+                    async:false,
+                    data:data,
+                    dataType:'json',
+                    success:function(data){
+                      console.log(data);
+                    }
+                });
+            });
+        </script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
   </body>
 </html>
