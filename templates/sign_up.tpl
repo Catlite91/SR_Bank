@@ -25,11 +25,13 @@
   </head>
 
   <body>
+  
     <div class="container-fluid sign-up">
         <div class="row col-md-6 col-sm-6 ui-sortable col-md-offset-3">
         <div class="panel panel-primary">
             <div class="panel-heading">Register</div>
             <div class ="panel-body">
+
             <form class='form-horizontal' action="signUp.do" method="POST">
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 ui-sortable" >User Number</label>
@@ -74,13 +76,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 ui-sortable" >Password</label>
                     <div class='col-md-6 col-sm-6 ui-sortable'>
-                        <input type="text" class="form-control" id="user_pwd" name="user_pwd" placeholder="PASSWORD" required>
+                        <input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="PASSWORD" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 ui-sortable" >Password Again</label>
                     <div class='col-md-6 col-sm-6 ui-sortable'>
-                        <input type="text" class="form-control" id="user_repwd"
+                        <input type="password" class="form-control" id="user_repwd"
                         name="user_repwd" placeholder="PASSWORD" required>
                     </div>
                 </div>
