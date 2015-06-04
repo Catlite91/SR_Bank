@@ -5,7 +5,14 @@ class home_Controller extends Controller{
     }
     
     function showPageAction(){
-        $tpl = "user_modify_password.tpl";
+        $tpl = "user_home.tpl";
+        session_start();
+        $this->assign("user_no", $_SESSION['user_no']);
+        $this->display($tpl);
+    }
+    
+    function modifyAction(){
+        $tpl = "user_add_account.tpl";
         $this->display($tpl);
     }
     

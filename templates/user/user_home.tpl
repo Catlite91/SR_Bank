@@ -35,35 +35,14 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Add New Account</label>
+                        <label>China Bank</label>
                     </div>
-                    <div class="panel-body">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password Again</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
-                                </div>
-                            </div>
-                            <div class='form-group'>
-                               <div class="col-md-12 col-sm-12 col-md-offset-4">
-                               <button type="submit" class="btn btn-primary ">Submit</button>
-                               <button type="cancel" class="btn btn-primary ">Cancel</button>
-                           </div>
-                </div>
-                        </form>
+                    <div class="jumbotron">
+                        <h1>Hello, world!</h1>
+                        <p>Bootstrap是Twitter推出的一个用于前端开发的开源工具包。
+                            它由Twitter的设计师Mark Otto和Jacob Thornton合作开发,是一个CSS/HTML框架。
+                            目前,Bootstrap最新版本为3.0...</p>
+                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
                     </div>
                 </div>
             </div>

@@ -248,7 +248,6 @@ class Db_Table{
 	}
 
 	public function _insert($data){
-		$data = $this->_filter($data);
 		$pkIdentity = $this->_primary[(int)$this->_identity];
 		if(!$pkData = $data[$pkIdentity]){
 			unset($data[$pkIdentity]);
@@ -262,7 +261,6 @@ class Db_Table{
 	}
 
 	public function _update($data, $where = null){
-		$data = $this->_filter($data);
         $pkData = array_intersect_key($data, array_flip($this->_primary));
 
         if (!$pkData)
@@ -291,7 +289,6 @@ class Db_Table{
 	}
 
 	public function _updateWithPK($data, $where = null){
-		$data = $this->_filter($data);
         $pkData = array_intersect_key($data, array_flip($this->_primary));
         if (!$pkData)
         {
@@ -387,7 +384,6 @@ class Db_Table{
 		if(!is_array($order)){
 			return " ORDER BY " . $order;
 		}
-		$order = $this->_filter($order);
 		$neworder = array();
 		foreach ($order as $key => $val) {
 			if($val == '1' || strtolower($val) =='asc'){
