@@ -265,13 +265,6 @@ class Db_Table{
             }
             return $flag;
         }
-        public function single_insert($sql){
-            
-           	$flag = false;
-            $flag = $this->_db->query($sql);
-            //var_dump($flag);
-            return $flag;
-        }
 
 	public function _insert($data){
 		$pkIdentity = $this->_primary[(int)$this->_identity];

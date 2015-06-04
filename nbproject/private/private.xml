@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/bank/templates/login.tpl</file>
+            <file>file:/C:/xampp/htdocs/bank/templates/user/user_account_transfer_result.tpl</file>
+            <file>file:/C:/xampp/htdocs/bank/model/bk_data/transfer.php</file>
+            <file>file:/C:/xampp/htdocs/bank/templates/user/user_head.tpl</file>
+            <file>file:/C:/xampp/htdocs/bank/templates/user/user_account_transfer.tpl</file>
+            <file>file:/C:/xampp/htdocs/bank/controller/login.php</file>
+        </group>
     </open-files>
 </project-private>

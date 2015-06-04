@@ -33,7 +33,6 @@
             <li>
                 <p>Transfer Between Accounts</p>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="<!--{$showTest}-->" ><a href="../transfer/showTest.do">Test</a></li>
                     <li class="<!--{$showAccountTransf}-->" ><a href="../transfer/showAccountTransf.do">Transfer In Same Account</a></li>
                     <li class="<!--{$showBankTransf}-->" ><a href="../transfer/showBankTransf.do">Transfer In Same Bank</a></li>
                     <li class="<!--{$showTransaction}-->" ><a href="../transfer/showTransaction.do">Transactions Query</a></li>

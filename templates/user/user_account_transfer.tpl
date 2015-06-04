@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -99,7 +99,7 @@
             <h4 class="modal-title" id="myModalLabel">Account Password</h4>
           </div>
           <div class="modal-body">
-          <form class="form-inline" action = "accountTransf.do" method="POST">
+          <form class="form-inline">
             <div class="form-group">
               <label class="" for="acc_pwd">Password:</label>
               <div class="input-group">
@@ -108,7 +108,6 @@
             </div>
           </form>
           </div>
-            
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" id= "commit" class="btn btn-primary">Commit</button>

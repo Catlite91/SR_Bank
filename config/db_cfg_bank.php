@@ -8,13 +8,13 @@ return array(
     'write' => array(
         'dbhost' => '127.0.0.1',
         'username' => 'root',
-        'password' => '180321',
+        'password' => 'mysql',
         'port' => '3306',
     ),
     'read' => array(
         'dbhost' => '127.0.0.1',
         'username' => 'root',
-        'password' => '180321',
+        'password' => 'mysql',
         'port' => '3306',
     )
 );

@@ -9,14 +9,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
            margin-top: 200px;
@@ -46,6 +45,10 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
                                 <label class="control-label col-md-4 col-sm-4" ><em><!--{$acc_no}--></em></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Transfer User Name</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" ><em><!--{$trans_user_no}--></em></label>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Transfer Account Number</label>
