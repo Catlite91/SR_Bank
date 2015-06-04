@@ -38,23 +38,32 @@
                         <label>Add New Account</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="addAcc.do" method="POST">
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="text" class="form-control" id="acc_num" name="acc_num">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Gender</label>
+                                <div class ="col-md-6 col-sm-6 ui-sortable">
+                                    <select class=" form-control" id="acc_type" name="acc_type">
+                                        <option value="C"selected>Credit</option>
+                                        <option value="D">Debit</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="password" class="form-control" id="acc_pwd" name="acc_pwd">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password Again</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="password" class="form-control" id="acc_repwd" name="acc_repwd">
                                 </div>
                             </div>
                             <div class='form-group'>
