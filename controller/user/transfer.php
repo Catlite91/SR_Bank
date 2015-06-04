@@ -25,7 +25,7 @@ class transfer_Controller extends Controller{
         $acc_balance = "";
         foreach ($accountInfo as $val){
             $user_account[$val['acc_id']] = $val['acc_num'];
-            $acc_balance .= $val['acc_num'] ."_" . $val['acc_balance']."|";
+            $acc_balance .= $val['acc_id'] ."_" . $val['acc_balance']."|";
         }
         $this->assign("user_no", $_SESSION['user_no']);
         $this->assign("acc_ids", $user_account);
@@ -72,40 +72,52 @@ class transfer_Controller extends Controller{
         $trans_acc_balance = $acc_temp_data[$trans_acc_id]['acc_balance'];
         if($acc_pwd !== $trans_password){
             $result['msg'] = "Error Password";
-            json_encode($result);
+            $result['flag'] = 0;
+            echo json_encode($result);
         }else{
             $acc_data['user_id'] = $user_id;
             $acc_data['trans_user_id'] = $user_id;
             $acc_data['acc_id'] = $acc_id;
             $acc_data['trans_acc_id'] = $trans_acc_id;
             $acc_data['trans_currency'] = $trans_currency;
-            $acc_data['trans_balance'] = $acc_balance - $trans_currency;
+            $acc_data['trans_balance'] = $acc_balance - $trans_amount;
             $acc_data['trans_amount'] = $trans_amount;
             $acc_data['trans_time'] =  date("Y-m-d H:i:s",time());
             $acc_data['trans_message'] = $trans_message;
             $acc_data['trans_type'] = 1;
             $acc_data['trans_state'] = 1;
 
-
             $trans_acc_data['user_id'] = $user_id;
             $trans_acc_data['trans_user_id'] = $user_id;
             $trans_acc_data['acc_id'] = $trans_acc_id;
             $trans_acc_data['trans_acc_id'] = $acc_id;
             $trans_acc_data['trans_currency'] = $trans_currency;
-            $trans_acc_data['trans_balance'] = $trans_acc_balance + $trans_currency;
+            $trans_acc_data['trans_balance'] = $trans_acc_balance + $trans_amount;
             $trans_acc_data['trans_amount'] = $trans_amount;
             $trans_acc_data['trans_time'] = date("Y-m-d H:i:s",time());
             $trans_acc_data['trans_message'] = $trans_message;
             $trans_acc_data['trans_type'] = 2;
             $trans_acc_data['trans_state'] = 1;
-            print_r($acc_data);
-            print_r($trans_acc_data);
-            $this->_transfer->addTransferInfo($acc_data, $trans_acc_data, $user_id);
+            $tag = $this->_transfer->addTransferInfo($acc_data, $trans_acc_data, $user_id);
+            if(!$tag){
+                $result['msg'] = "Error 404";
+                $result['flag'] = 2;
+                echo json_encode($result);
+            }else{
+                $result['msg'] = "Succeed";
+                $result['flag'] = 1;
+                echo json_encode($result);
+            }
         }
-        
     }
     
     function bankTransfAction(){
+        
+    }
+    
+    function showAccountTransfResultAction(){
+        $tpl = "user_account_transfer_result.tpl";
+        $this->display($tpl);
         
     }
 }

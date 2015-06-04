@@ -246,6 +246,25 @@ class Db_Table{
 	public function deleteAll(){
 		return $this->_db->delete($this->_tableName);
 	}
+        
+        public function trans_insert($sqls){
+            $flag = true;
+            $this->_db->query("START TRANSACTION");
+            $result = true;
+            foreach($sqls as $sql){
+               $res = $this->_db->query($sql);
+               if($res == false){
+                  $result = false; 
+               }
+            }
+            if($result == false){
+                $this->_db->query("ROLLBACK");
+                $flag = false;
+            }else{
+                $this->_db->query("COMMIT");
+            }
+            return $flag;
+        }
 
 	public function _insert($data){
 		$pkIdentity = $this->_primary[(int)$this->_identity];

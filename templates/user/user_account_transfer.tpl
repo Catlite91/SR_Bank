@@ -103,7 +103,7 @@
             <div class="form-group">
               <label class="" for="acc_pwd">Password:</label>
               <div class="input-group">
-                <input type="password" class="form-control" id="acc_pwd" name="acc_pwd" placeholder="Amount">
+                <input type="password" class="form-control" id="acc_pwd" name="acc_pwd" placeholder="">
               </div>
             </div>
           </form>
@@ -126,6 +126,7 @@
                var data = $('#acc_balance').attr('data-balance');
                var cols = data.split('|');
                var first_curr = cols[0].split("_")[0];
+               $('#acc_balance').removeData();
                for(var i = 0; i< cols.length-1; i++){
                    var temp = cols[i].split("_");
                    $('#acc_balance').data(temp[0], temp[1]);
@@ -166,7 +167,17 @@
                     data:data,
                     dataType:'json',
                     success:function(data){
-                      console.log(data);
+                       console.log(data);
+                        if(data.flag === 1){
+                            $('.modal-body').html("<h3>"+data.msg+"</h3>");
+                             setTimeout(function(){
+                                 window.location = "showAccountTransfResult.do";
+                             },3000);
+                        }else if(data.flag === 2){
+                             $('.modal-body').html("<h3>"+data.msg+"</h3>");
+                        }else{
+                            $('#acc_pwd').append("<h3>"+data.msg+"</h3>");
+                        }
                     }
                 });
             });
