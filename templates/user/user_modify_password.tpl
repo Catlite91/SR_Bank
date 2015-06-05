@@ -14,13 +14,13 @@
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
-    
+
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
            margin-top: 200px;
-       } 
+       }
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
   </head>
@@ -30,7 +30,7 @@
     <div class="container home_content">
         <div class='row'>
             <div class="col-md-3 sidebar-offcanvas">
-             <!--{include file="user_left_nav.tpl"}-->   
+             <!--{include file="user_left_nav.tpl"}-->
             </div>
             <div class="col-md-9">
                 <div class="panel panel-default">
@@ -38,23 +38,23 @@
                         <label>Modify Login Password</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="modifypwd.do" method="POST">
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Used Password</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="password" class="form-control" id="acc_no" name="old_pwd">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >New Password</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="password" class="form-control" id="acc_no" name="new_pwd">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >New Password Again</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="user_no">
+                                    <input type="password" class="form-control" id="acc_no" name="confirm_new_pwd">
                                 </div>
                             </div>
                             <div class='form-group'>

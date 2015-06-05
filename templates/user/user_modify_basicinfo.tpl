@@ -14,13 +14,13 @@
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
-    
+
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
            margin-top: 200px;
-       } 
+       }
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
   </head>
@@ -30,40 +30,25 @@
     <div class="container home_content">
         <div class='row'>
             <div class="col-md-3 sidebar-offcanvas">
-             <!--{include file="user_left_nav.tpl"}-->   
+             <!--{include file="user_left_nav.tpl"}-->
             </div>
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Add New Account</label>
+                        <label>Modify Login Password</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="addAcc.do" method="POST">
+                        <form class="form-horizontal" action="modifybasicinfo.do" method="POST">
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Mobile Number</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_num" name="acc_num">
+                                    <input type="text" class="form-control" id="acc_no" name="mobile_phone">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Gender</label>
-                                <div class ="col-md-6 col-sm-6 ui-sortable">
-                                    <select class=" form-control" id="acc_type" name="acc_type">
-                                        <option value="C"selected>Credit</option>
-                                        <option value="D">Debit</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Email Address</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="password" class="form-control" id="acc_pwd" name="acc_pwd">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Password Again</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="password" class="form-control" id="acc_repwd" name="acc_repwd">
+                                    <input type="text" class="form-control" id="acc_no" name="Email">
                                 </div>
                             </div>
                             <div class='form-group'>
