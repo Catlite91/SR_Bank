@@ -6,7 +6,7 @@ class bk_data_transfer_Model extends Model{
         $this->_bkUserDB = Load::table("bk_user", "db_cfg_bank");
         $this->_bkUsrAccDB = Load::table("bk_user_acc", "db_cfg_bank");
     }
-    
+
     function getBkUserInfoByIds($where){
         $where['user_state'] = 1;
         $data = $this->_bkUserDB->fetchAll($where);
@@ -16,7 +16,7 @@ class bk_data_transfer_Model extends Model{
         }
         return $result;
     }
-    
+
     function getAccountIdsByUsrIds($where){
         $data = $this->_bkUsrAccDB->fetchAll($where);
         $result = array();
@@ -25,7 +25,7 @@ class bk_data_transfer_Model extends Model{
         }
         return $result;
     }
-    
+
     function getAccountInfoByIds($where){
         $where['acc_state'] = 1;
         $data = $this->_bkAccountDB->fetchAll($where);
@@ -35,7 +35,7 @@ class bk_data_transfer_Model extends Model{
         }
         return $result;
     }
-    
+
     function getAccountInfoByNos($where){
         $where['acc_state'] = 1;
         $data = $this->_bkAccountDB->fetchAll($where);
@@ -45,7 +45,7 @@ class bk_data_transfer_Model extends Model{
         }
         return $result;
     }
-    
+
     function getTransferInfoByIds($where, $user_id){
         $where['trans_state'] = 1;
         $id = (int)$user_id % 10;
@@ -58,7 +58,7 @@ class bk_data_transfer_Model extends Model{
         }
         return $result;
     }
-    
+
     function getAllTransferInfoByIds($where, $user_id){
         $where['trans_state'] = 1;
         $id = (int)$user_id % 10;
@@ -69,9 +69,9 @@ class bk_data_transfer_Model extends Model{
         foreach($data as $val){
             $result[$val['user_id']][] = $val;
         }
-        return $result;  
+        return $result;
     }
-    
+
     function addTransferInfo($acc_data, $trans_acc_data, $user_id, $trans_user_id){
         if($user_id == $trans_user_id){
             $id = (int)$user_id % 10;
@@ -85,7 +85,7 @@ class bk_data_transfer_Model extends Model{
             $this->_bkAccTransfer = Load::table($acc_table, "db_cfg_bank");
             $this->_bkTransAccTransfer = Load::table($trans_acc_table, "db_cfg_bank");
         }
-        
+
         $sqls = array();
         $acc_sql = "INSERT INTO $acc_table (user_id, trans_user_id, acc_id, trans_acc_id, trans_currency, trans_balance, ".
                  "trans_amount, trans_time, trans_message, trans_type, trans_state ) VALUES (";
@@ -113,7 +113,7 @@ class bk_data_transfer_Model extends Model{
         $trans_acc_sql .= "'".$trans_acc_data['trans_message']."',";
         $trans_acc_sql .= "'".$trans_acc_data['trans_type']."',";
         $trans_acc_sql .= "'".$trans_acc_data['trans_state']."')";
-        
+
         $sqls[] = $acc_sql;
         $sqls[] = $trans_acc_sql;
         $sqls[] = "UPDATE bk_account SET acc_balance = '".$acc_data['trans_balance'] ."' WHERE acc_id = '" . $acc_data['acc_id'] ."'";

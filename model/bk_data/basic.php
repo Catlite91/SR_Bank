@@ -23,8 +23,7 @@ class bk_data_basic_Model extends Model{
         }
         return $result;
     }
-<<<<<<< HEAD
-=======
+
 
     function signUpUser($where){
         $table = "bk_user";
@@ -44,7 +43,7 @@ class bk_data_basic_Model extends Model{
         var_dump($signUp_sql);
          
          $result = false;
-         $result = $this->_bankUserDB->single_insert($signUp_sql);
+         $result = $this->_bankUserDB->query($signUp_sql);
          return $result;
     }
 
@@ -68,7 +67,7 @@ class bk_data_basic_Model extends Model{
         $acc_sql .= "'".$where['acc_type']."',";
         $acc_sql .= "'".$where['acc_balance']."')";
 
-        $acc_result = $this->_bankAccountDB->single_insert($acc_sql);
+        $acc_result = $this->_bankAccountDB->query($acc_sql);
         if($acc_result == true){//添加账户成功以后，获取acc_id
             $col = "acc_id";
             $where = "acc_num="."'".$where['acc_num']."'";
@@ -85,7 +84,7 @@ class bk_data_basic_Model extends Model{
             $user_acc_sql .= "'".$user_id."',";
             $user_acc_sql .= "'".$acc_id[0]['acc_id']."')";
 
-            $result = $this->_bankUserAccDB->single_insert($user_acc_sql);
+            $result = $this->_bankUserAccDB->query($user_acc_sql);
         }else{//添加账户失败了
 
         }
@@ -119,10 +118,10 @@ class bk_data_basic_Model extends Model{
     function delAccountById($where){
         $where['acc_state'] = 0;
         $sql = "UPDATE bk_account SET acc_state = '".$where['acc_state']."' WHERE acc_id = '" .$where['acc_id']."'";
-        $result = $this->_bankAccountDB->single_insert($sql);
+        $result = $this->_bankAccountDB->query($sql);
         return $result;
     }
->>>>>>> 953c2b27ffda4bbe252f8468d66a019005e04913
+
     
 }
 

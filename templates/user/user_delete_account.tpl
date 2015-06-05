@@ -39,15 +39,18 @@
                     </div>
                     <div class="panel-body">
                       <form class="form-horizontal" action="delAcc.do" method="POST">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="acc_table">
                         <!-- On rows -->
                       <thead>  
                         <tr class="active">
                           <th align="center" width="10%">
                     #
                   </th>
-                  <th align="center" width="70%">
+                  <th align="center" width="55%">
                     Account Number
+                  </th>
+                  <th align="center" width="15%">
+                    Account Type
                   </th>
                   <th align="center" width="20%">
                     Operation
@@ -56,20 +59,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <!-- 
-                <tr>
-                         <td><input type="text" class="form-control" id="no" name="no"></td>
-                          <td><input type="text" class="form-control" id="acc_num" name="acc_num" ></td>
-                          <td><button type="submit" class="btn btn-primary ">Delete</button></td>
-                        </tr>
 
-                        <tr class="success">
-                         
-                        </tr>
-                        <tr class="warning">...</tr>
-                        <tr class="danger">...</tr>
-                        <tr class="info">...</tr>
--->
 
                        </table>
                      </form>
@@ -78,7 +68,37 @@
             </div>
         </div>
     </div> <!-- /container -->
-    <script type="text/javascript">
+    <script>
+$(document).ready(function(){
+                 $.ajax({
+                    url:'delAccount.do',
+                    type:'get',
+                    async:false,
+                    data:data,
+                    dataType:'json',
+                    success:function(res){
+                       console.log(res);
+                       if(res.flag ==1){
+                          showTable(res.data, "acc_table");
+                       }else{
+                           $('tbody', "#acc_table").html("No data");
+                       }
+                   }
+                });  
+});
+
+// $('#delBtn'),click(function(){
+//   var data = { };
+//   data.acc_id = $('#delBtn').val();
+//   $.ajax({
+//     url:'delAcc.do',
+//     type:'get',
+//     async:false,
+//     data:data,
+//     dataType:'json',
+//     success:
+//   });
+// })
     function showAccTable(user_account,id){
         var tableBody = "";
         $.each(user_account,function(num,val){
@@ -86,7 +106,7 @@
             $.each(val,function(k,v){
               tableBody += '<td>' + v + '</td>';
             });
-            tableBody += '<td><button type=\"submit\" class=\"btn btn-primary \">Delete</button></td></tr>';
+            tableBody += '<td><button type=\"submit\" class=\"btn btn-primary \" id=\"delBtn\" value=\"\">Delete</button></td></tr>';
         });
         $('tbody',"#"+id).html(tableBody);
       }
