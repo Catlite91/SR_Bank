@@ -91,6 +91,35 @@ class bk_data_basic_Model extends Model{
         
          return $result;
     }
+
+    //根据用户ID获取此用户所有的acc_id
+    function getAccountIdsByUserId($where){
+        $data = $this->_bankUserAccDB->fetchAll($where);
+        $result = array();
+        foreach ($data as $val) {
+            $result[$val['user_id']][] = $val['acc_id'];
+        }
+        return $result;
+    }
+
+    //根据acc_id获取账户的信息
+    function getAccountInfoByAccIds($where){
+        $where['acc_state'] = 1;
+        $data = $this->_bankAccountDB->fetchAll($where);
+        $result = array();
+        foreach ($data as $val){
+            $result[$val['acc_id']] = $val;
+        }
+        return $result;
+    }
+
+    //根据acc_id删除账户
+    function delAccountById($where){
+        $where['acc_state'] = 0;
+        $sql = "UPDATE bk_account SET acc_state = '".$where['acc_state']."' WHERE acc_id = '" .$where['acc_id']."'";
+        $result = $this->_bankAccountDB->single_insert($sql);
+        return $result;
+    }
     
 }
 

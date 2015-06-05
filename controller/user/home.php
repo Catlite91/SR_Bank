@@ -12,7 +12,7 @@ class home_Controller extends Controller{
         $this->display($tpl);
     }
     
-    function modifyAction(){
+    function addAccountAction(){
         $tpl = "user_add_account.tpl";
         $this->display($tpl);
     }
@@ -48,10 +48,47 @@ class home_Controller extends Controller{
             
         }
         
-        
-
-
     }
+
+//初始化删除账户的页面
+    function delAccountAction(){
+        $tpl = "user_delete_account.tpl";
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        $where = array();
+        $where['user_id'] = $user_id;
+        $accountData = $this->_User->getAccountIdsByUserId($where);
+
+
+        $accountIds = array();
+        $accountIds['acc_id'] = $accountData[$user_id];
+
+        $accountInfo = $this->_User->getAccountInfoByAccIds($accountIds);
+        var_dump($accountInfo);
+        $user_account = array();
+        foreach ($accountInfo as $val){
+            $user_account[$val['acc_id']] = $val['acc_id'];
+            
+            $user_account[$val['acc_num']] = $val['acc_num'];
+        }
+        var_dump($user_account);
+
+        $this->display($tpl);
+    }
+
+    //删除账户
+    function delAccAction(){
+        $acc_id = $this->_get("acc_id");
+        $where['acc_id'] = $acc_id;
+        $delAccSuccess = $this->_User->delAccountById($where);
+        if($delAccSuccess == true){
+                //删除账户成功，转到转账页面
+                header("Location: ../home/showPage.do");
+        }else{
+                //删除账户失败
+        }
+    }
+    
     
 }
 
