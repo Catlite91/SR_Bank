@@ -25,8 +25,8 @@
             <li>
                 <p>Account Management</p>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="<!--{$show}-->" ><a href="modify.do">Add New Account</a></li>
-                    <li class="<!--{$show}-->" ><a href="modify.do">Delete Account</a></li>
+                    <li class="<!--{$show}-->" ><a href="addAccount.do">Add New Account</a></li>
+                    <li class="<!--{$show}-->" ><a href="delAccount.do">Delete Account</a></li>
                     <li class="<!--{$show}-->" ><a href="modify.do">Loss Report</a></li>
                 </ul>
             </li>
