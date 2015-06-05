@@ -38,23 +38,17 @@
                         <label>Modify Login Password</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="modifypwd.do" method="POST">
+                        <form class="form-horizontal" action="modifybasicinfo.do" method="POST">
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Used Password</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Mobile Number</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="password" class="form-control" id="acc_no" name="old_pwd">
+                                    <input type="text" class="form-control" id="acc_no" name="mobile_phone">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >New Password</label>
+                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >Email Address</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="password" class="form-control" id="acc_no" name="new_pwd">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 ui-sortable" >New Password Again</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="password" class="form-control" id="acc_no" name="confirm_new_pwd">
+                                    <input type="text" class="form-control" id="acc_no" name="Email">
                                 </div>
                             </div>
                             <div class='form-group'>
