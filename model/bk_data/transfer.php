@@ -52,12 +52,24 @@ class bk_data_transfer_Model extends Model{
         $table = "bk_transaction_".$id;
         $this->_bkTransfer = Load::table($table, "db_cfg_bank");
         $data = $this->_bkTransfer->fetchAll($where, "trans_time desc", 1);
-        print_r($data);
         $result = array();
         foreach($data as $val){
             $result[$val['user_id']] = $val;
         }
         return $result;
+    }
+    
+    function getAllTransferInfoByIds($where, $user_id){
+        $where['trans_state'] = 1;
+        $id = (int)$user_id % 10;
+        $table = "bk_transaction_".$id;
+        $this->_bkTransfer = Load::table($table, "db_cfg_bank");
+        $data = $this->_bkTransfer->fetchAll($where, "trans_time desc");
+        $result = array();
+        foreach($data as $val){
+            $result[$val['user_id']][] = $val;
+        }
+        return $result;  
     }
     
     function addTransferInfo($acc_data, $trans_acc_data, $user_id, $trans_user_id){

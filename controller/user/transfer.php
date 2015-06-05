@@ -267,9 +267,65 @@ class transfer_Controller extends Controller{
         
     }
     
-    function showTransactionQueryAction(){
+    function showTransactionAction(){
         $tpl = "user_transfer_query.tpl";
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        $where['user_id'] = $user_id;
+        $accountData = $this->_transfer->getAccountIdsByUsrIds($where);
+        $accountIds = array();
+        $accountIds['acc_id'] = $accountData[$user_id];
+        $accountInfo = $this->_transfer->getAccountInfoByIds($accountIds);
+        $user_account = array();
+        foreach ($accountInfo as $val){
+            $user_account[$val['acc_id']] = $val['acc_num'];
+        }
+        $this->assign("user_no", $_SESSION['user_no']);
+        $this->assign("acc_ids", $user_account);
+        $this->assign('showTransaction', "active");
         $this->display($tpl);
+    }
+    
+    function ajaxShowQueryResultAction(){
+        $acc_id = $this->_get("acc_id");
+        $trans_currency = $this->_get("trans_currency");
+        $query_start_time = date("Y-m-d H:i:s", strtotime($this->_get("start_time")));
+        $query_end_time = date("Y-m-d H:i:s", strtotime($this->_get("end_time")));
+        $where = array();
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        if($acc_id == 0){
+            // query all account
+        }else{
+            $where['acc_id'] = $acc_id;
+        }
+        $where['trans_currency'] = $trans_currency;
+        $where[1] = "trans_time >= '$query_start_time'";
+        $where[2] = "trans_time <= '$query_end_time'";
         
+        $data = $this->_transfer->getAllTransferInfoByIds($where, $user_id);
+        $acc_where = array();
+        $result = array();
+        if(empty($data)){
+           $result['flag']  = 0;  //no data
+        }else{
+            foreach($data[$user_id] as $val){
+                $acc_where['acc_id'][] = $val['acc_id'];
+            }
+            $acc_data = $this->_transfer->getAccountInfoByIds($acc_where);
+
+            $res_data = array();
+            $i = 0;
+            foreach($data[$user_id] as $val){
+                $res_data[$i]['acc_no'] = $acc_data[$val['acc_id']]['acc_num'];
+                $res_data[$i]['trans_time'] = $val['trans_time'];
+                $res_data[$i]['trans_type'] = self::$trans_type_map[$val['trans_type']];
+                $res_data[$i]['trans_amount'] = $val['trans_amount'];
+                $i++;
+            }
+            $result['flag'] = 1;
+            $result['data'] = $res_data;
+        }
+        echo json_encode($result);
     }
 }

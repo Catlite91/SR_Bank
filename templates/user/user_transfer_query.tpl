@@ -9,14 +9,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
-    
+    <link href="../../plugins/bootstrap-datepicker-1.4.0-dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
            margin-top: 200px;
@@ -38,55 +37,44 @@
                         <label>Transactions Query</label>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        <div class="form-horizontal">
                         <div class="form-group">
-                         <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account To Pay</label>
+                         <label class="control-label col-md-4 col-sm-4 ui-sortable" >Accounts</label>
                          <div class ="col-md-6 col-sm-6 ui-sortable">
-                             <select class=" form-control">
-                                 <option value="M"selected>6233002302312312</option>
-                                 <option value="F">6233123123123</option>
-                             </select>
+                            <select class=" form-control" id="acc_id" name="acc_id">
+                                 <!--{html_options options=$acc_ids}-->
+                            </select>
                          </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4 col-sm-4 ui-sortable" >Currency</label>
                             <div class ="col-md-6 col-sm-6 ui-sortable">
-                                <select class=" form-control">
-                                    <option value="M"selected>RMB</option>
-                                    <option value="F">USD</option>
-                                    <option value="F">EUR</option>
+                                <select class=" form-control" id="trans_currency">
+                                    <option value="RMB"selected>RMB</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4 col-sm-4 ui-sortable" >Time To Query</label>
-                            <div class ="col-md-6 col-sm-6 ui-sortable">
-                                <select class=" form-control">
-                                    <option value="M"selected>RMB</option>
-                                    <option value="F">USD</option>
-                                    <option value="F">EUR</option>
-                                </select>
+                            <div class="col-md-6 col-sm-6 ui-sortable">
+                                <div class='input-daterange input-group' id="datepicker">
+                                    <input type="text" class="input-sm form-control" id="start_time" name="start_time" />
+                                    <span class="input-group-addon">to</span>
+                                    <input type="text" class="input-sm form-control" id="end_time" name="end_time" />
+                                </div> 
                             </div>
                         </div>
                          <div class='form-group'>
                                <div class="col-md-12 col-sm-12 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Submit</button>
+                                <button type="submit" class="btn btn-primary " id="query">Submit</button>
                                </div>
                         </div>
-                        </form>
-                                    <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th><th>First Name</th><th>Last Name</th><th>Username</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><th scope="row">1</th><td>Mark</td><td>Otto</td><td>@mdo</td></tr>
-                  <tr><th scope="row">2</th><td>Jacob</td> <td>Thornton</td><td>@fat</td></tr>
-                  <tr><th scope="row">2</th><td>Jacob</td> <td>Thornton</td><td>@fat</td></tr>
-                </tbody>
-            </table>
-                    </div>
+                        </div>
+                    <table class="table table-striped" id="query_table">
+                        <thead><tr><th>#</th><th>Account No</th><th>Transfer Time</th><th>Transfer Type</th><th>Transfer Amount</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                 </div>
                 </div>
             </div>
         </div>
@@ -96,6 +84,51 @@
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <<script src="../../plugins/bootstrap-datepicker-1.4.0-dist/js/bootstrap-datepicker.min.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
+        <script>
+            $(document).ready(function(){
+                $(' .input-daterange').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                });
+            });
+            
+            $('#query').click(function(){
+                var data = { };
+                data.acc_id = $('#acc_id').val();
+                data.trans_currency = $('#trans_currency').val();
+                data.start_time = $('#start_time').val();
+                data.end_time = $('#end_time').val();
+                console.log(data);
+                 $.ajax({
+                    url:'ajaxShowQueryResult.do',
+                    type:'get',
+                    async:false,
+                    data:data,
+                    dataType:'json',
+                    success:function(res){
+                       console.log(res);
+                       if(res.flag ==1){
+                          showTable(res.data, "query_table");
+                       }else{
+                           $('tbody', "#query_table").html("No data");
+                       }
+                   }
+                });               
+            });
+            
+            function showTable(data, id){
+              var tableBody = "";
+              $.each(data, function(key, val){
+                tableBody += '<tr><td>' + key + '</td>';
+                $.each(val, function(k,v){
+                    tableBody += '<td>' + v + '</td>';
+                });
+                tableBody += '</tr>';
+              });
+              $('tbody', "#"+id).html(tableBody);
+            }
+        </script>
   </body>
 </html>
