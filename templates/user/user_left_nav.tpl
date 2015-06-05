@@ -35,7 +35,7 @@
                     <li class="<!--{$showAccountTransf}-->" ><a href="../transfer/showAccountTransf.do">Transfer In Same Account</a></li>
                     <li class="<!--{$showBankTransf}-->" ><a href="../transfer/showBankTransf.do">Transfer In Same Bank</a></li>
                     <li class="<!--{$showTransaction}-->" ><a href="../transfer/showTransaction.do">Transactions Query</a></li>
-                    <li class="<!--{$showTransf}-->" ><a href="../transfer/showTransf.do">DownLoad Transfer Infomation</a></li>
+                    <li class="<!--{$showDownloadTransaction}-->" ><a href="../transfer/showDownloadTransaction.do">DownLoad Transfer Infomation</a></li>
                 </ul>
             </li>
         </ul>

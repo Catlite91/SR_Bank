@@ -3,10 +3,10 @@
 class transfer_Controller extends Controller{
     
     public static $trans_type_map =  array(
-            1 => "账户内部转出",
-            2 => "账户内部转入",
-            3 => "同行转出",
-            4 => "同行转入"
+            1 => "Account Transfer Out",
+            2 => "Account Transfer In",
+            3 => "Bank Transfer Out",
+            4 => "Bank Transfer In"
     );
     function init(){
         $this->_transfer = Load::model("transfer", "bk_data");
@@ -277,6 +277,7 @@ class transfer_Controller extends Controller{
         $accountIds['acc_id'] = $accountData[$user_id];
         $accountInfo = $this->_transfer->getAccountInfoByIds($accountIds);
         $user_account = array();
+        $user_account[0] = "All";
         foreach ($accountInfo as $val){
             $user_account[$val['acc_id']] = $val['acc_num'];
         }
@@ -327,5 +328,98 @@ class transfer_Controller extends Controller{
             $result['data'] = $res_data;
         }
         echo json_encode($result);
+    }
+    
+    function showDownloadTransactionAction(){
+        $tpl = "user_transfer_download.tpl";
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        $where['user_id'] = $user_id;
+        $accountData = $this->_transfer->getAccountIdsByUsrIds($where);
+        $accountIds = array();
+        $accountIds['acc_id'] = $accountData[$user_id];
+        $accountInfo = $this->_transfer->getAccountInfoByIds($accountIds);
+        $user_account = array();
+        $user_account[0] = "All";
+        foreach ($accountInfo as $val){
+            $user_account[$val['acc_id']] = $val['acc_num'];
+        }
+        $this->assign("user_no", $_SESSION['user_no']);
+        $this->assign("acc_ids", $user_account);
+        $this->assign('showDownloadTransaction', "active");
+        $this->display($tpl);
+    }
+    
+    function ajaxDownloadTransactionAction(){
+        $acc_id = $this->_get("acc_id");
+        $trans_currency = $this->_get("trans_currency");
+        $query_start_time = date("Y-m-d H:i:s", strtotime($this->_get("start_time")));
+        $query_end_time = date("Y-m-d H:i:s", strtotime($this->_get("end_time")));
+        $where = array();
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        if($acc_id == 0){
+            // query all account
+        }else{
+            $where['acc_id'] = $acc_id;
+        }
+        $where['trans_currency'] = $trans_currency;
+        $where[1] = "trans_time >= '$query_start_time'";
+        $where[2] = "trans_time <= '$query_end_time'";
+        
+        $data = $this->_transfer->getAllTransferInfoByIds($where, $user_id);
+        if(empty($data)){
+            echo "NO Data";
+        }else{
+            $acc_where = array();
+            $user_where = array();
+            $user_where['user_id'][] = $user_id;
+            foreach($data[$user_id] as $val){
+                $acc_where['acc_id'][] = $val['acc_id'];
+                $user_where['user_id'][] = $val['trans_user_id'];
+            }
+            $acc_data = $this->_transfer->getAccountInfoByIds($acc_where);
+            $user_data = $this->_transfer->getBkUserInfoByIds($user_where);
+            $res_data = array();
+            $i = 0;
+            foreach($data[$user_id] as $val){
+                $res_data[$i]['trans_id'] = $val['trans_id'];
+                $res_data[$i]['user_name'] = $user_data[$user_id]['user_name'];
+                $res_data[$i]['acc_num'] = $acc_data[$val['acc_id']]['acc_num'];
+                $res_data[$i]['trans_user_name'] = $user_data[$val['trans_user_id']]['user_name'];
+                $res_data[$i]['trans_acc_num'] = $acc_data[$val['acc_id']]['acc_num'];
+                $res_data[$i]['trans_type'] = self::$trans_type_map[$val['trans_type']];
+                $res_data[$i]['trans_currency'] = $val['trans_currency'];
+                $res_data[$i]['trans_amount'] = $val['trans_amount'];
+                $res_data[$i]['trans_balance'] = $val['trans_balance'];
+                $res_data[$i]['trans_time'] = $val['trans_time'];
+                $res_data[$i]['trans_message'] = $val['trans_message'];
+                $i++;
+            }
+            $head = iconv("utf-8", "utf-8", "Transfter Number,User Number,Account Number,Transfer User Number,Transfer Account Number,Transfer Type, Transfer Currency,Transfer Amount,Transfer Balance,Transfer Time, Transfer Message\r\n");
+            $tempContent = "";
+            foreach ($res_data as $val) {
+                $tempContent .= $val['trans_id'] . ',';
+                $tempContent .= $val['user_name'] . ',';
+                $tempContent .= $val['acc_num'] . ',';
+                $tempContent .= $val['trans_user_name'] . ',';
+                $tempContent .= $val['trans_acc_num'] . ',';
+                $tempContent .= $val['trans_type'] . ',';
+                $tempContent .= $val['trans_currency'] . ',';
+                $tempContent .= $val['trans_amount'] . ',';
+                $tempContent .= $val['trans_balance'] . ',';
+                $tempContent .= $val['trans_time'] . ',';
+                $tempContent .= $val['trans_message'];
+                $tempContent .= "\r\n";
+            }
+//            $encode = mb_detect_encoding($tempContent, array("ASCII","UTF-8","GB2312","GBK","BIG5")); 
+            $file_name = date("Y-m-d H:i:s", strtotime($query_start_time)) ."-".date("Y-m-d H:i:s", strtotime($query_end_time)) ."Transfer Data";
+            $content = iconv("utf-8", "utf-8", $tempContent);
+            $fileName = iconv("utf-8", "utf-8", $file_name);
+            header("Content-type: application/vnd.ms-excel");
+            header("Content-Disposition: attachment; filename=" . $fileName . ".csv");
+            echo $head . $content;
+            exit();
+        }
     }
 }
