@@ -38,15 +38,59 @@
                         <label>Delete Account</label>
                     </div>
                     <div class="panel-body">
+                      <form class="form-horizontal" action="delAcc.do" method="POST">
                         <table class="table table-striped">
-                        
+                        <!-- On rows -->
+                      <thead>  
+                        <tr class="active">
+                          <th align="center" width="10%">
+                    #
+                  </th>
+                  <th align="center" width="70%">
+                    Account Number
+                  </th>
+                  <th align="center" width="20%">
+                    Operation
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <!-- 
+                <tr>
+                         <td><input type="text" class="form-control" id="no" name="no"></td>
+                          <td><input type="text" class="form-control" id="acc_num" name="acc_num" ></td>
+                          <td><button type="submit" class="btn btn-primary ">Delete</button></td>
+                        </tr>
+
+                        <tr class="success">
+                         
+                        </tr>
+                        <tr class="warning">...</tr>
+                        <tr class="danger">...</tr>
+                        <tr class="info">...</tr>
+-->
+
                        </table>
+                     </form>
                     </div>
                 </div>
             </div>
         </div>
     </div> <!-- /container -->
-
+    <script type="text/javascript">
+    function showAccTable(user_account,id){
+        var tableBody = "";
+        $.each(user_account,function(num,val){
+            tableBody += '<tr><td class=\"num\">' + num + '</td>';
+            $.each(val,function(k,v){
+              tableBody += '<td>' + v + '</td>';
+            });
+            tableBody += '<td><button type=\"submit\" class=\"btn btn-primary \">Delete</button></td></tr>';
+        });
+        $('tbody',"#"+id).html(tableBody);
+      }
+    </script>
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
