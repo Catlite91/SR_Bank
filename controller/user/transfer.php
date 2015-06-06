@@ -22,6 +22,7 @@ class transfer_Controller extends Controller{
     function showAccountTransfAction(){
         $tpl = "user_account_transfer.tpl";
         session_start();
+        $this->getUserInfo();
         $user_id = $_SESSION['user_id'];
         $where = array();
         $where['user_id'] = $user_id;
@@ -46,6 +47,7 @@ class transfer_Controller extends Controller{
     function showBankTransfAction(){
         $tpl = "user_bank_transfer.tpl";
         session_start();
+        $this->getUserInfo();
         $user_id = $_SESSION['user_id'];
         $where['user_id'] = $user_id;
         $accountData = $this->_transfer->getAccountIdsByUsrIds($where);
@@ -194,6 +196,7 @@ class transfer_Controller extends Controller{
     function showBankTransfResultAction(){
         $tpl = "user_bank_transfer_result.tpl";
         session_start();
+        $this->getUserInfo();
         $where = array();
         $user_id = $_SESSION['user_id'];
         $where['user_id'][] = $user_id;
@@ -222,6 +225,7 @@ class transfer_Controller extends Controller{
     function showAccountTransfResultAction(){
         $tpl = "user_account_transfer_result.tpl";
         session_start();
+        $this->getUserInfo();
         $where = array();
         $user_id = $_SESSION['user_id'];
         $where['user_id'] = $user_id;
@@ -270,6 +274,7 @@ class transfer_Controller extends Controller{
     function showTransactionAction(){
         $tpl = "user_transfer_query.tpl";
         session_start();
+        $this->getUserInfo();
         $user_id = $_SESSION['user_id'];
         $where['user_id'] = $user_id;
         $accountData = $this->_transfer->getAccountIdsByUsrIds($where);
@@ -333,6 +338,7 @@ class transfer_Controller extends Controller{
     function showDownloadTransactionAction(){
         $tpl = "user_transfer_download.tpl";
         session_start();
+        $this->getUserInfo();
         $user_id = $_SESSION['user_id'];
         $where['user_id'] = $user_id;
         $accountData = $this->_transfer->getAccountIdsByUsrIds($where);
@@ -421,5 +427,16 @@ class transfer_Controller extends Controller{
             echo $head . $content;
             exit();
         }
+    }
+    
+    function getUserInfo(){
+       $user_id = $_SESSION['user_id'];
+       $where = array();
+       $where['user_id'] = $user_id;
+       $data = $this->_transfer->getBkUserInfoByIds($where);
+       $this->assign("user_no", $data[$user_id]['user_no']);
+       $this->assign("user_name", $data[$user_id]['user_name']);
+       $this->assign("user_tel", $data[$user_id]['user_tel']);
+       $this->assign("user_email", $data[$user_id]['user_email']);
     }
 }

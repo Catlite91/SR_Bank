@@ -46,7 +46,6 @@
                                 </div>
                                  <label class="col-md-2 col-sm-2 ui-sortable" id="label_trans_acc_num"></label>
                             </div>
-                           
                             <hr>
                             <p class="text-left"><u><strong>Step Two: Payment Information</strong></u></p>
                             <div class="form-group">
@@ -69,11 +68,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Sum</label>
-                                <div class='col-md-6 col-sm-6 ui-sortable input-group'>
+                                 <div class='col-md-6 col-sm-6 ui-sortable'>
+                                    <div class='input-group'>
                                     <input type="text" class="form-control" id="trans_amount" name="trans_amount">
                                      <span class="input-group-addon">.00</span>
                                      <label class="col-md-2 col-sm-2 ui-sortable" id="label_acc_balance"></label>
                                      <input type="hidden" id="acc_balance" data-balance = "<!--{$acc_balance}-->" />
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

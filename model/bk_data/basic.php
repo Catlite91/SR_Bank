@@ -61,10 +61,11 @@ class bk_data_basic_Model extends Model{
         $where['acc_balance'] = 0.0;
          
         $acc_sql = "INSERT INTO $table (acc_num, acc_pwd, ".
-                 "acc_type, acc_balance) VALUES (";
+                 "acc_type, acc_state, acc_balance) VALUES (";
         $acc_sql .= "'".$where['acc_num']."',";
         $acc_sql .= "'".$where['acc_pwd']."',";
         $acc_sql .= "'".$where['acc_type']."',";
+        $acc_sql .= "'".$where['acc_state']."',";
         $acc_sql .= "'".$where['acc_balance']."')";
 
         $acc_result = $this->_bankAccountDB->query($acc_sql);
@@ -113,10 +114,26 @@ class bk_data_basic_Model extends Model{
         }
         return $result;
     }
+        //根据acc_id获取账户的信息
+    function getAccountInfoByState($where){
+        $data = $this->_bankAccountDB->fetchAll($where);
+        $result = array();
+        foreach ($data as $val){
+            $result[$val['acc_id']] = $val;
+        }
+        return $result;
+    }
 
     //根据acc_id删除账户
     function delAccountById($where){
         $where['acc_state'] = 0;
+        $sql = "UPDATE bk_account SET acc_state = '".$where['acc_state']."' WHERE acc_id = '" .$where['acc_id']."'";
+        $this->_bankAccountDB->query($sql);
+        return true;
+    }
+    
+    function authorizeById($where){
+        $where['acc_state'] = 1;
         $sql = "UPDATE bk_account SET acc_state = '".$where['acc_state']."' WHERE acc_id = '" .$where['acc_id']."'";
         $this->_bankAccountDB->query($sql);
         return true;

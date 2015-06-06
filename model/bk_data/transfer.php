@@ -71,6 +71,31 @@ class bk_data_transfer_Model extends Model{
         }
         return $result;
     }
+    
+    function addTransferInfoByDeposit($acc_data, $user_id){
+        $id = (int)$user_id % 10;
+        $acc_table = "bk_transaction_".$id;
+        $this->_bkAccTransfer = Load::table($acc_table, "db_cfg_bank");
+        $sqls = array();
+        $acc_sql = "INSERT INTO $acc_table (user_id, trans_user_id, acc_id, trans_acc_id, trans_currency, trans_balance, ".
+                 "trans_amount, trans_time, trans_message, trans_type, trans_state ) VALUES (";
+        $acc_sql .= "'".$acc_data['user_id']."',";
+        $acc_sql .= "'".$acc_data['trans_user_id']."',";
+        $acc_sql .= "'".$acc_data['acc_id']."',";
+        $acc_sql .= "'".$acc_data['trans_acc_id']."',";
+        $acc_sql .= "'".$acc_data['trans_currency']."',";
+        $acc_sql .= "'".$acc_data['trans_balance']."',";
+        $acc_sql .= "'".$acc_data['trans_amount']."',";
+        $acc_sql .= "'".$acc_data['trans_time']."',";
+        $acc_sql .= "'".$acc_data['trans_message']."',";
+        $acc_sql .= "'".$acc_data['trans_type']."',";
+        $acc_sql .= "'".$acc_data['trans_state']."')";
+        
+        $sqls[] = $acc_sql;
+        $sqls[] = "UPDATE bk_account SET acc_balance = '".$acc_data['trans_balance'] ."' WHERE acc_id = '" . $acc_data['acc_id'] ."'";
+        $result = $this->_bkAccTransfer->trans_insert($sqls);
+        return  $result;
+    }
 
     function addTransferInfo($acc_data, $trans_acc_data, $user_id, $trans_user_id){
         if($user_id == $trans_user_id){

@@ -1,11 +1,17 @@
 <?php
 class account_Controller extends Controller{
+    public static $account_type_map =  array(
+            "C" => "Credit",
+            "D" => "Debit"
+    );
     function init(){
         $this->_User = Load::model("basic", "bk_data");
+        $this->_transfer = Load::model("transfer", "bk_data");
     }
     
     function showPageAction(){
         $tpl = "user_home.tpl";
+        $this->getUserInfo();
         session_start();
         $this->assign("user_no", $_SESSION['user_no']);
         $this->display($tpl);
@@ -14,6 +20,7 @@ class account_Controller extends Controller{
     function addAccountAction(){
         $tpl = "user_add_account.tpl";
          session_start();
+         $this->getUserInfo();
         // $user_id = $_SESSION['user_id'];
         $this->assign("user_no", $_SESSION['user_no']);
         $this->assign("showAddAccount", "active");
@@ -36,7 +43,7 @@ class account_Controller extends Controller{
             $where['acc_num'] = $acc_num;
             $where['acc_pwd'] = $acc_pwd;
             $where['acc_type'] = $acc_type;
-
+            $where['acc_state'] = 2;
             $addAccSuccess = $this->_User->addAccount($where);
             if($addAccSuccess == true){
                 //添加账户成功，转到转账页面
@@ -46,7 +53,7 @@ class account_Controller extends Controller{
             }
         }else{
             //该卡号已存在
-            
+            echo "Error";
         }
         
     }
@@ -55,6 +62,7 @@ class account_Controller extends Controller{
     function delAccountAction(){
         $tpl = "user_delete_account.tpl";
         session_start();
+        $this->getUserInfo();
         $user_id = $_SESSION['user_id'];
         $where = array();
         $where['user_id'] = $user_id;
@@ -71,7 +79,7 @@ class account_Controller extends Controller{
             $i = 0;
             foreach ($accountInfo as $val){
                 $user_account[$i]['acc_no'] = $val['acc_num'];
-                $user_account[$i]['acc_type'] = $val['acc_type'];
+                $user_account[$i]['acc_type'] = self::$account_type_map[$val['acc_type']];
                 $user_account[$i]['acc_id'] = $val['acc_id'];
                 $i++;
             }
@@ -97,6 +105,17 @@ class account_Controller extends Controller{
             $result['msg'] = "Error";
         }
         echo json_encode($result);
+    }
+    
+    function getUserInfo(){
+       $user_id = $_SESSION['user_id'];
+       $where = array();
+       $where['user_id'] = $user_id;
+       $data = $this->_transfer->getBkUserInfoByIds($where);
+       $this->assign("user_no", $data[$user_id]['user_no']);
+       $this->assign("user_name", $data[$user_id]['user_name']);
+       $this->assign("user_tel", $data[$user_id]['user_tel']);
+       $this->assign("user_email", $data[$user_id]['user_email']);
     }
   
 }

@@ -1,14 +1,11 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="panel-title">Customer Service</div>
+        <div class="panel-title">Customer Info</div>
     </div>
   <div class="panel-body">
-      <ul class="list-unstyled">
-          <li><a href="http://www.boc.cn/en/" target="_blank">Mobile Banking Transaction Rules</a></li>
-          <li><a href="http://www.boc.cn/en/" target="_blank">Mobile Banking Service Agreement</a></li>
-          <li><a href="http://www.boc.cn/en/" target="_blank">Mobile Banking Payment Services Agreement<a></li>
-          <li><a href="http://www.boc.cn/en/" target="_blank">Security Notice of BOC Online Banking</a></li>
-      </ul>
+      <p class='text-primary'><!--{$user_name}-->(<!--{$user_no}-->)</p>
+      <p class='text-primary'><!--{$user_tel}--></p>
+      <p class='text-primary'><!--{$user_email}--></p>
   </div>
 </div>
 
