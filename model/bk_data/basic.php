@@ -118,8 +118,8 @@ class bk_data_basic_Model extends Model{
     function delAccountById($where){
         $where['acc_state'] = 0;
         $sql = "UPDATE bk_account SET acc_state = '".$where['acc_state']."' WHERE acc_id = '" .$where['acc_id']."'";
-        $result = $this->_bankAccountDB->query($sql);
-        return $result;
+        $this->_bankAccountDB->query($sql);
+        return true;
     }
 
     

@@ -41,10 +41,10 @@
             <li>
                 <p>Transfer Between Accounts</p>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="<!--{$showAccountTransf}-->" ><a href="../transfer/showAccountTransf.do"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Transfer In Same Account</a></li>
-                    <li class="<!--{$showBankTransf}-->" ><a href="../transfer/showBankTransf.do"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Transfer In Same Bank</a></li>
+                    <li class="<!--{$showAccountTransf}-->" ><a href="../transfer/showAccountTransf.do"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Transfer In Internal Account</a></li>
+                    <li class="<!--{$showBankTransf}-->" ><a href="../transfer/showBankTransf.do"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Transfer Between Accounts</a></li>
                     <li class="<!--{$showTransaction}-->" ><a href="../transfer/showTransaction.do"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Transactions Query</a></li>
-                    <li class="<!--{$showDownloadTransaction}-->" ><a href="../transfer/showDownloadTransaction.do"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> DownLoad Transfer Infomation</a></li>
+                    <li class="<!--{$showDownloadTransaction}-->" ><a href="../transfer/showDownloadTransaction.do"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> DownLoad Bank Statement</a></li>
                 </ul>
             </li>
         </ul>

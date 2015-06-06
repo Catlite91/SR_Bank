@@ -34,7 +34,7 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Transactions Download</label>
+                        <label>Download Bank Statement</label>
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">

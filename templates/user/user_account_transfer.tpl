@@ -35,7 +35,7 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Transfer In Same Account</label>
+                        <label>Transfer In Internal Account</label>
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">

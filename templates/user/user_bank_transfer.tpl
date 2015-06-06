@@ -34,7 +34,7 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Transfer In Same Bank</label>
+                        <label>Transfer Between Accounts</label>
                     </div>
                     <div class="panel-body">
                         <p class="text-left"><u><strong>Step One: Fill Information Of Receiver</strong></u></p>

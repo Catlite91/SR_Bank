@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>Transfer In Same Account</label>
+                        <label>Transfer In Internal Account</label>
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">

@@ -60,20 +60,26 @@ class account_Controller extends Controller{
         $where['user_id'] = $user_id;
         $accountData = $this->_User->getAccountIdsByUserId($where);
 
-
-        $accountIds = array();
-        $accountIds['acc_id'] = $accountData[$user_id];
-
-        $accountInfo = $this->_User->getAccountInfoByAccIds($accountIds);
-        $user_account = array();
-        foreach ($accountInfo as $val){
-            $user_account[$val['acc_id']] = $val['acc_id'];
+        if(empty($accountData)){
             
-            $user_account[$val['acc_num']] = $val['acc_num'];
+        }else{
+            $accountIds = array();
+            $accountIds['acc_id'] = $accountData[$user_id];
+
+            $accountInfo = $this->_User->getAccountInfoByAccIds($accountIds);
+            $user_account = array();
+            $i = 0;
+            foreach ($accountInfo as $val){
+                $user_account[$i]['acc_no'] = $val['acc_num'];
+                $user_account[$i]['acc_type'] = $val['acc_type'];
+                $user_account[$i]['acc_id'] = $val['acc_id'];
+                $i++;
+            }
+            $this->assign("acc_info", $user_account);
+            $this->assign("user_no", $_SESSION['user_no']);
+            $this->assign("showDelAccount", "active");
+            $this->display($tpl);
         }
-        $this->assign("user_no", $_SESSION['user_no']);
-        $this->assign("showDelAccount", "active");
-        $this->display($tpl);
     }
 
     //删除账户
@@ -81,12 +87,16 @@ class account_Controller extends Controller{
         $acc_id = $this->_get("acc_id");
         $where['acc_id'] = $acc_id;
         $delAccSuccess = $this->_User->delAccountById($where);
+        $result = array();
         if($delAccSuccess == true){
                 //删除账户成功，转到转账页面
-                header("Location: ../home/showPage.do");
+            $result['flag'] = 1;
         }else{
                 //删除账户失败
+            $result['flag'] = 0;
+            $result['msg'] = "Error";
         }
+        echo json_encode($result);
     }
   
 }

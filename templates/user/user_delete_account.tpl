@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -37,85 +37,69 @@
                         <label>Delete Account</label>
                     </div>
                     <div class="panel-body">
-                      <form class="form-horizontal" action="delAcc.do" method="POST">
-                        <table class="table table-striped" id="acc_table">
-                        <!-- On rows -->
-                      <thead>  
-                        <tr class="active">
-                          <th align="center" width="10%">
-                    #
-                  </th>
-                  <th align="center" width="55%">
-                    Account Number
-                  </th>
-                  <th align="center" width="15%">
-                    Account Type
-                  </th>
-                  <th align="center" width="20%">
-                    Operation
-                  </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-
-
-                       </table>
-                     </form>
+                      <div class="form-horizontal" action="delAcc.do" method="POST">
+                         <table class="table table-striped" id="acc_table">
+                            <thead><tr><th>#</th><th>Account No.</th><th>Account Type</th><th>Operation</th></tr></thead>
+                            <tbody>
+                                <!--{foreach from=$acc_info key = i item=j}-->
+                                <tr><td><!--{$i}--></td><td><!--{$j.acc_no}--></td><td><!--{$j.acc_type}--></td><td><a class="btn btn-primary delete_acc" href="#"  data-acc-id="<!--{$j.acc_id}-->"role="button"  data-toggle="modal" data-target="#myModal">Delete</a></td></tr>
+                                <!--{/foreach}-->
+                            </tbody>
+                        </table>
+                </div>
                     </div>
                 </div>
             </div>
         </div>
     </div> <!-- /container -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Delete Account</h4>
+          </div>
+          <div class="modal-body">
+            <label class="text-danger" id="del_acc_id_last">Are You Sure?</label>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id= "commit" class="btn btn-primary">Commit</button>
+          </div>
+        </div>
+      </div>
+    </div>
         <!--{include file="user_foot.tpl"}-->
-    <script>
-$(document).ready(function(){
-                 $.ajax({
-                    url:'delAccount.do',
-                    type:'get',
-                    async:false,
-                    data:data,
-                    dataType:'json',
-                    success:function(res){
-                       console.log(res);
-                       if(res.flag ==1){
-                          showTable(res.data, "acc_table");
-                       }else{
-                           $('tbody', "#acc_table").html("No data");
-                       }
-                   }
-                });  
-});
-
-// $('#delBtn'),click(function(){
-//   var data = { };
-//   data.acc_id = $('#delBtn').val();
-//   $.ajax({
-//     url:'delAcc.do',
-//     type:'get',
-//     async:false,
-//     data:data,
-//     dataType:'json',
-//     success:
-//   });
-// })
-    function showAccTable(user_account,id){
-        var tableBody = "";
-        $.each(user_account,function(num,val){
-            tableBody += '<tr><td class=\"num\">' + num + '</td>';
-            $.each(val,function(k,v){
-              tableBody += '<td>' + v + '</td>';
-            });
-            tableBody += '<td><button type=\"submit\" class=\"btn btn-primary \" id=\"delBtn\" value=\"\">Delete</button></td></tr>';
-        });
-        $('tbody',"#"+id).html(tableBody);
-      }
-    </script>
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <script>
+        $('.delete_acc').click(function(){
+            $("#del_acc_id_last").attr("acc_id", $(this).attr('data-acc-id'));
+        
+        });
+        $('#commit').click(function(){
+          var data = { };
+          data.acc_id = $('#del_acc_id_last').attr('acc_id');
+          $.ajax({
+            url:'delAcc.do',
+            type:'get',
+            async:false,
+            data:data,
+            dataType:'json',
+            success: function(data){
+                if(data.flag === 1){
+                    window.location = "delAccount.do";
+                }else{
+                $('#del_acc_id_last').html(data.msg);
+               }
+            }
+          });
+        });
+    </script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
   </body>
 </html>
