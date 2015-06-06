@@ -18,7 +18,7 @@
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <style>
        .home_content{
-           margin-top: 200px;
+           margin-top: 100px;
        } 
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -80,6 +80,7 @@
             </div>
         </div>
     </div> <!-- /container -->
+        <!--{include file="user_foot.tpl"}-->
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>

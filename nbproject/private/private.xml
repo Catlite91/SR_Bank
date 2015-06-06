@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/bank/templates/login.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/templates/user/user_account_transfer_result.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/model/bk_data/transfer.php</file>
+            <file>file:/C:/xampp/htdocs/bank/templates/user/user_home.tpl</file>
+            <file>file:/C:/xampp/htdocs/bank/model/bk_data/basic.php</file>
+            <file>file:/C:/xampp/htdocs/bank/templates/user/user_transfer_download.tpl</file>
             <file>file:/C:/xampp/htdocs/bank/templates/user/user_head.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/templates/user/user_account_transfer.tpl</file>
-            <file>file:/C:/xampp/htdocs/bank/controller/login.php</file>
+            <file>file:/C:/xampp/htdocs/bank/templates/user/user_left_nav.tpl</file>
+            <file>file:/C:/xampp/htdocs/bank/controller/user/transfer.php</file>
+            <file>file:/C:/xampp/htdocs/bank/controller/user/account.php</file>
         </group>
     </open-files>
 </project-private>

@@ -7,7 +7,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>BANK OF CHINA/LOGIN</title>
+    <title>China Bank/LOGIN</title>
 
     <!-- Bootstrap core CSS -->
    
@@ -43,6 +43,7 @@
       </div>
        
     </div> <!-- /container -->
+        <!--{include file="user_foot.tpl"}-->
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>

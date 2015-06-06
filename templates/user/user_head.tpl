@@ -14,12 +14,12 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><!--{$user_no}--><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <!--{$user_no}--><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Modify Info</a></li>
-                <li><a href="#">Modify Password</a></li>
+                <li><a href="../modify/showmodifybasicinfo.do">Modify Info</a></li>
+                <li><a href="../modify/showmodifypwd.do">Modify Password</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="../../login/logOut.do">Log Out</a></li>
               </ul>
             </li>
           </ul>

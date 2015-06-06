@@ -91,4 +91,11 @@ class login_Controller extends Controller {
         echo json_encode($result);
     }
     
+    function logOutAction(){
+        session_start();
+        session_unset();
+        session_destroy();
+        $this->indexAction();
+    }
+    
 } 

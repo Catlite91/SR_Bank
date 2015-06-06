@@ -13,6 +13,10 @@ class account_Controller extends Controller{
     
     function addAccountAction(){
         $tpl = "user_add_account.tpl";
+         session_start();
+        // $user_id = $_SESSION['user_id'];
+        $this->assign("user_no", $_SESSION['user_no']);
+        $this->assign("showAddAccount", "active");
         $this->display($tpl);
     }
 
@@ -20,9 +24,6 @@ class account_Controller extends Controller{
     //new an account for user
     function addAccAction(){
         
-        // session_start();
-        // $user_id = $_SESSION['user_id'];
-
         //get new account info
         $acc_num = $this->_get("acc_num");
         $acc_pwd = $this->_get("acc_pwd");
@@ -70,7 +71,8 @@ class account_Controller extends Controller{
             
             $user_account[$val['acc_num']] = $val['acc_num'];
         }
-
+        $this->assign("user_no", $_SESSION['user_no']);
+        $this->assign("showDelAccount", "active");
         $this->display($tpl);
     }
 

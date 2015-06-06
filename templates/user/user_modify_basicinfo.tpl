@@ -9,17 +9,16 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
-           margin-top: 200px;
+           margin-top: 100px;
        }
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -42,13 +41,13 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Mobile Number</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="mobile_phone">
+                                    <input type="text" class="form-control" autocomplete="off" id="acc_no" name="mobile_phone">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Email Address</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
-                                    <input type="text" class="form-control" id="acc_no" name="Email">
+                                    <input type="text" class="form-control" autocomplete="off" id="acc_no" name="Email">
                                 </div>
                             </div>
                             <div class='form-group'>
@@ -63,7 +62,7 @@
             </div>
         </div>
     </div> <!-- /container -->
-
+    <!--{include file="user_foot.tpl"}-->
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>

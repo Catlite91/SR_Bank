@@ -18,7 +18,7 @@
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <style>
        .home_content{
-           margin-top: 200px;
+           margin-top: 100px;
        }
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -37,9 +37,8 @@
                         <label>My Accounts</label>
                     </div>
                     <div class="panel-body">
-
                     <table class="table table-striped" id="query_table">
-                        <thead><tr><th>#</th><th>User No</th><th>Account No</th><th>Account Type</th><th>Account State</th><th>Account Balance</th></tr></thead>
+                        <thead><tr><th>#</th><th>User No</th><th>Account No</th><th>Account Balance</th></tr></thead>
                         <tbody></tbody>
                     </table>
                  </div>
@@ -47,29 +46,24 @@
             </div>
         </div>
     </div> <!-- /container -->
+        <!--{include file="user_foot.tpl"}-->
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-        <<script src="../../plugins/bootstrap-datepicker-1.4.0-dist/js/bootstrap-datepicker.min.js"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
+        	<!-- ================== END PAGE LEVEL JS ================== -->
         <script>
             $(document).ready(function(){
-                $(' .input-daterange').datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                });
-            });
-
-            $('#query').click(function(){
+                //console.log();
                  $.ajax({
-                    url:'ajaxShowQueryResult.do',
+                    url:'ajaxShowUserAccount.do',
                     type:'get',
                     async:false,
-                    data:data,
+                    //data:data,
                     dataType:'json',
                     success:function(res){
+                      console.log(res.flag);
                        console.log(res);
                        if(res.flag ==1){
                           showTable(res.data, "query_table");
@@ -77,6 +71,8 @@
                            $('tbody', "#query_table").html("No data");
                        }
                    }
+
+
                 });
             });
 

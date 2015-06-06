@@ -303,7 +303,7 @@ class transfer_Controller extends Controller{
         $where['trans_currency'] = $trans_currency;
         $where[1] = "trans_time >= '$query_start_time'";
         $where[2] = "trans_time <= '$query_end_time'";
-        
+        $where['user_id'] = $user_id;
         $data = $this->_transfer->getAllTransferInfoByIds($where, $user_id);
         $acc_where = array();
         $result = array();

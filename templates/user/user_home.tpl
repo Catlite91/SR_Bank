@@ -9,17 +9,16 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>China Bank</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="../../plugins/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
-           margin-top: 200px;
+           margin-top: 100px;
        } 
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -35,20 +34,28 @@
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <label>China Bank</label>
+                        <label>Overview</label>
                     </div>
+                    <div class="panel-body">
                     <div class="jumbotron">
-                        <h1>Hello, world!</h1>
-                        <p>Bootstrap是Twitter推出的一个用于前端开发的开源工具包。
-                            它由Twitter的设计师Mark Otto和Jacob Thornton合作开发,是一个CSS/HTML框架。
-                            目前,Bootstrap最新版本为3.0...</p>
-                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                        <div class="container">
+                        <h1>China Bank</h1>
+                        <p>Bank of China，or Bank of China Limited in full, is one of China’s four state-owned commercial banks. 
+                            Its businesses cover commercial banking, investment banking and insurance. 
+                            Members of the group include BOC Hong Kong, BOC International, 
+                            BOCG Insurance and other financial institutions.
+                            The Bank provides a comprehensive range of high-quality financial services to individual and corporate customers as well as financial institutions worldwide. 
+                            </p>
+                            <p><img src="../../images/china_bank.jpg" class="img-thumbnail"></p>
+                        <p><a class="btn btn-primary btn-lg" href="http://www.boc.cn/en/" target="_blank" role="button">Learn more</a></p>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div> <!-- /container -->
-
+    <!--{include file="user_foot.tpl"}-->
 	<!-- ================== BEGIN BASE JS ================== -->
         <script src="../../plugins/jquery-1.11.3.min.js"></script>
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>

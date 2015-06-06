@@ -16,10 +16,9 @@
     <!-- ================== END BASE CSS STYLE ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="../../css/docs.min.css" rel="stylesheet">
     <style>
        .home_content{
-           margin-top: 200px;
+           margin-top: 100px;
        } 
     </style>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -95,7 +94,7 @@
             </div>
         </div>
     </div> <!-- /container -->
-    
+    <!--{include file="user_foot.tpl"}-->
 <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -112,6 +111,7 @@
                 <input type="password" class="form-control" id="acc_pwd" name="acc_pwd" placeholder="">
               </div>
             </div>
+            <label class="text-danger" id="pwd_error"></label>
           </form>
           </div>
           <div class="modal-footer">
@@ -165,10 +165,8 @@
                     data:data,
                     dataType:'json',
                     success:function(data){
-                        console.log(data.user_no);
                         if(data.user_no == 0){
                           $("#label_trans_acc_num").html("Account Not Exist");
-                          console.log($(this).parent());
                           $("#trans_acc_num").parent().addClass("has-error");
                           $("#trans_acc_num").parent().removeClass("has-success");
                         }else{
@@ -189,7 +187,6 @@
                 data.trans_amount = $('#trans_amount').val();
                 data.trans_currency = $('#trans_currency').val();
                 data.trans_message = $('#trans_message').val();
-                console.log(data);
                 $.ajax({
                     url:'ajaxBankTransf.do',
                     type:'get',
@@ -202,11 +199,11 @@
                             $('.modal-body').html("<h3>"+data.msg+"</h3><em>waiting......</em>");
                              setTimeout(function(){
                                  window.location = "showBankTransfResult.do";
-                             },3000);
+                             },1000);
                         }else if(data.flag === 2){
-                             $('.modal-body').html("<h3>"+data.msg+"</h3>");
+                             $('#pwd_error').html(data.msg);
                         }else{
-                            $('#acc_pwd').append("<h3>"+data.msg+"</h3>");
+                            $('#pwd_error').html(data.msg);
                         }
                     }
                 });
