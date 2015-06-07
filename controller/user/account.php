@@ -22,6 +22,10 @@ class account_Controller extends Controller{
          session_start();
          $this->getUserInfo();
         // $user_id = $_SESSION['user_id'];
+        $acc_res =  $this->_get("acc_res");
+        if(!empty($acc_res)){
+            $this->assign("acc_res", $acc_res);
+        }
         $this->assign("user_no", $_SESSION['user_no']);
         $this->assign("showAddAccount", "active");
         $this->display($tpl);
@@ -47,13 +51,14 @@ class account_Controller extends Controller{
             $addAccSuccess = $this->_User->addAccount($where);
             if($addAccSuccess == true){
                 //添加账户成功，转到转账页面
-                header("Location: ../home/showPage.do");
+                header("Location: ../account/addAccount.do?acc_res=1");
             }else{
                 //添加账户失败
+                header("Location: ../account/addAccount.do?acc_res=3");
             }
         }else{
             //该卡号已存在
-            echo "Error";
+            header("Location: ../account/addAccount.do?acc_res=2");
         }
         
     }

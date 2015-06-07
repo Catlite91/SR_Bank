@@ -38,6 +38,7 @@
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" action="addAcc.do" method="POST">
+                            <input type="hidden" id="acc_id_test" data-result="<!--{$acc_res}-->" >
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 ui-sortable" >Account Number</label>
                                 <div class='col-md-6 col-sm-6 ui-sortable'>
@@ -83,6 +84,20 @@
 	<script src="../../plugins/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <script>
+            $(document).ready(function(){
+                var res = $('#acc_id_test').attr("data-result");
+                if(res !== null && res !== undefined){
+                    if(res == 1){
+                        alert("Success");
+                    }else if(res == 2){
+                        alert("Account Already Exists");
+                    }else if(res == 3){
+                        alert("Error");
+                    }
+                }
+           });
+        </script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
   </body>
 </html>

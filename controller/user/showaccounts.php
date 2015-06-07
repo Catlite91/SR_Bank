@@ -8,7 +8,8 @@ class showaccounts_Controller extends Controller{
     
     public static $acc_state_map =  array(
             1 => "Normal",
-            2 => "Authorize"
+            2 => "Authorize",
+            0 => "Delete"
     );
 
     function showuseraccountsAction(){

@@ -6,7 +6,9 @@ class transfer_Controller extends Controller{
             1 => "Account Transfer Out",
             2 => "Account Transfer In",
             3 => "Bank Transfer Out",
-            4 => "Bank Transfer In"
+            4 => "Bank Transfer In",
+            5 => "Bank Deposit",
+            6 => "Bank WithDraw"
     );
     function init(){
         $this->_transfer = Load::model("transfer", "bk_data");
@@ -295,8 +297,8 @@ class transfer_Controller extends Controller{
     function ajaxShowQueryResultAction(){
         $acc_id = $this->_get("acc_id");
         $trans_currency = $this->_get("trans_currency");
-        $query_start_time = date("Y-m-d H:i:s", strtotime($this->_get("start_time")));
-        $query_end_time = date("Y-m-d H:i:s", strtotime($this->_get("end_time")));
+        $query_start_time = date("Y-m-d H:i:s", strtotime($this->_get("start_time"))+86400);
+        $query_end_time = date("Y-m-d H:i:s", strtotime($this->_get("end_time"))+ 86400);
         $where = array();
         session_start();
         $user_id = $_SESSION['user_id'];
@@ -359,8 +361,8 @@ class transfer_Controller extends Controller{
     function ajaxDownloadTransactionAction(){
         $acc_id = $this->_get("acc_id");
         $trans_currency = $this->_get("trans_currency");
-        $query_start_time = date("Y-m-d H:i:s", strtotime($this->_get("start_time")));
-        $query_end_time = date("Y-m-d H:i:s", strtotime($this->_get("end_time")));
+        $query_start_time = date("Y-m-d H:i:s", strtotime($this->_get("start_time"))+86400);
+        $query_end_time = date("Y-m-d H:i:s", strtotime($this->_get("end_time"))+ 86400);
         $where = array();
         session_start();
         $user_id = $_SESSION['user_id'];
